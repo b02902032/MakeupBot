@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    	<title>MakeupBot</title>
+        <link rel='stylesheet' type='text/css' href='stylesheet.css'/>
+        <script src="jquery.min.js"></script>
+        <script type="text/javascript" src="json2.js"></script>
+        <script type="text/javascript" src="javascript.js"></script>
+        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <!link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+    </head>
+	<body>
+		<div id="arrow_prev">
+		    <a class="arrowPrev">prev</a>
+		</div>
+		<div id="arrow_next">
+		    <a class="arrowNext">next</a>
+		</div>
+		
+		<section>
+			<div class="page1">
+				<h1>Welcome to MakeUpBot!</h1>
+				<h2>watch tutorial video, then create a perfect make up step by step</h2>
+				<div class="Tutorialvideo" align= "center">
+					<iframe width="854" height="480"
+					src="https://www.youtube.com/embed/9pjpQoZoW6E">
+					</iframe>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="page2">
+				<h2>choose make up template or input the image of desired make up</h2>
+				<div class="MakeUpTemplate" align= "left">
+					<form>
+						<fieldset>
+							<legend>Choose template</legend>
+							<form enctype="multipart/form-data">
+								<div class="slideshow-container">
+									<div class="mySlides fade">
+										<div class="numbertext">1 / 3</div>
+										<img src="img1.jpg" style="width:50%">
+										<div class="text">Caption Text</div>
+								  	</div>
+
+									<div class="mySlides fade">
+										<div class="numbertext">2 / 3</div>
+										<img src="img2.jpg" style="width:50%">
+										<div class="text">Caption Two</div>
+									</div>
+
+									<div class="mySlides fade">
+										<div class="numbertext">3 / 3</div>
+										<img src="img3.jpg" style="width:50%">
+										<div class="text">Caption Three</div>
+									</div>
+
+									<a class="prev" onclick="plusSlides(-1)">❮</a>
+									<a class="next" onclick="plusSlides(1)">❯</a>
+								</div>
+
+								<br>
+
+								<div style="text-align:center">
+									<span class="dot" onclick="currentSlide(1)"></span> 
+									<span class="dot" onclick="currentSlide(2)"></span> 
+									<span class="dot" onclick="currentSlide(3)"></span> 
+								</div>
+								<script>
+									var slideIndex = 1;
+									showSlides(slideIndex);
+
+									function plusSlides(n) {
+									  showSlides(slideIndex += n);
+									}
+
+									function currentSlide(n) {
+									  showSlides(slideIndex = n);
+									}
+
+									function showSlides(n) {
+									  var i;
+									  var slides = document.getElementsByClassName("mySlides");
+									  var dots = document.getElementsByClassName("dot");
+									  if (n > slides.length) {slideIndex = 1}    
+									  if (n < 1) {slideIndex = slides.length}
+									  for (i = 0; i < slides.length; i++) {
+									      slides[i].style.display = "none";  
+									  }
+									  for (i = 0; i < dots.length; i++) {
+									      dots[i].className = dots[i].className.replace(" active", "");
+									  }
+									  slides[slideIndex-1].style.display = "block";  
+									  dots[slideIndex-1].className += " active";
+									}
+								</script>						
+						</fieldset>
+					</form>
+				</div>
+				<div class="InputTemplate" align= "right">
+					<form>
+					<fieldset>
+						<legend>Input yours</legend>
+						<b>Select File</b>
+						<input type="file" id="files" name="userMakeupTemplate" multiple />
+						<progress></progress>
+						<div class="userMakeupTemplateShow">
+							<img id="userMakeupTemplateShowImg" src="#" alt="image preview" />
+						</div>
+					</fieldset>
+					</form>
+				</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="page3">
+				<h2>take a picture of yourself</h2>
+			</div>
+		</section>
+		
+		<section>
+			<div class="page4">
+				<h2>see how chosen make up would look like</h2>
+				<div id="draggable">Drag me</div>
+			</div>
+		</section>
+		
+		<section>
+			<div class="page5">
+				<h2>Start!</h2>
+			</div>
+		</section>
+
+	</body>
+</html>
