@@ -13,12 +13,35 @@
 
     </head>
 	<body>
+
+		<!- - - - - - - - - - - - - - - - - - - - side navigation - - - - - - - - - - - - - - - - - - - ->
+		<div id="mySidenav" class="sidenav">
+			<a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+			<a href="#pageone">Instructions</a>
+			<a href="#pagetwo">Makeup Template</a>
+			<a href="#pagethree">Take a Picture</a>
+			<a href="#pagefour">Edit</a>
+			<a href="#pagefive">Draw on Lego</a>
+		</div>
+
+		<span class="menuBar" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+		<script>
+			function openNav() {
+			    document.getElementById("mySidenav").style.width = "250px";
+			}
+
+			function closeNav() {
+			    document.getElementById("mySidenav").style.width = "0";
+			}
+		</script>
+		<!- - - - - - - - - - - - - - - - - - - - side navigation - - - - - - - - - - - - - - - - - - - ->
+
 		<!- - - - - - - - - - - - - - - - - - - - page transition - - - - - - - - - - - - - - - - - - - ->
 		<div id="arrow_prev">
-		    <a class="arrowPrev">prev</a>
+		    <a class="arrowPrev"><span>prev</span></a>
 		</div>
 		<div id="arrow_next">
-		    <a class="arrowNext">next</a>
+		    <a class="arrowNext"><span>next</span></a>
 		</div>
 		<!- - - - - - - - - - - - - - - - - - - - page transition - - - - - - - - - - - - - - - - - - - ->
 
@@ -26,10 +49,11 @@
 		<!- - - - - - - - - - - - - - - - - - - - page one        - - - - - - - - - - - - - - - - - - - ->
 		<section>
 			<div class="page1">
+				<a name="pageone"></a>
 				<h1>Welcome to MakeUpBot!</h1>
 				<h2>watch tutorial video, then create a perfect make up step by step</h2>
 				<div class="Tutorialvideo" align= "center">
-					<iframe width="854" height="480"
+					<iframe width="768" height="432"
 					src="https://www.youtube.com/embed/9pjpQoZoW6E">
 					</iframe>
 				</div>
@@ -40,6 +64,7 @@
 		<!- - - - - - - - - - - - - - - - - - - - page two        - - - - - - - - - - - - - - - - - - - ->
 		<section>
 			<div class="page2">
+				<a name="pagetwo"></a>
 				<h2>choose make up template or input the image of desired make up</h2>
 				<!- - - - - - - - - - - - - - - makeup template - - - - - - - - - - - - - - ->
 				<div class="MakeUpTemplate" align= "left">
@@ -132,12 +157,14 @@
 		<!- - - - - - - - - - - - - - - - - - - - page three      - - - - - - - - - - - - - - - - - - - ->
 		<section>
 			<div class="page3">
+				<a name="pagethree"></a>
 				<h2>take a picture of yourself</h2>
 				
 				<!- - - - - - - - - - - - - - - webcam          - - - - - - - - - - - - - - ->
 			    <script src="webcam.js"></script>
-			    <div id="my_camera" style="width:320px; height:240px;"></div>
-			    <div id="my_result"></div>
+			    <div id="my_camera" align= "left"></div>
+			    <div id="my_result" align= "right"></div>
+			    <div id="takeSnapshot"><button class="button" onclick="take_snapshot()""><span>Take Snapshot</span></button></div>
 
 			    <script language="JavaScript">
 			        Webcam.attach( '#my_camera' );
@@ -148,7 +175,6 @@
 			            } );
 			        }
 			   	</script>
-			    <a href="javascript:void(take_snapshot())">Take Snapshot</a>
 			    <!- - - - - - - - - - - - - - - webcam          - - - - - - - - - - - - - - ->
 
 			</div>
@@ -158,6 +184,7 @@
 		<!- - - - - - - - - - - - - - - - - - - - page four       - - - - - - - - - - - - - - - - - - - ->
 		<section>
 			<div class="page4">
+				<a name="pagefour"></a>
 				<h2>see how chosen make up would look like</h2>
 				<div id="draggable">Drag me</div>
 			</div>
@@ -167,6 +194,7 @@
 		<!- - - - - - - - - - - - - - - - - - - - page five       - - - - - - - - - - - - - - - - - - - ->
 		<section>
 			<div class="page5">
+				<a name="pagefive"></a>
 				<h2>Start!</h2>
 			</div>
 		</section>
