@@ -63,6 +63,64 @@ function sendMessage(msg,log) {
 
 connectObj.init();
 
+function imageUpload(){
+    var elem = document.getElementById('userMakeupTemplateShowImg');
+    if (!elem.hasAttribute('chosen')) {
+        var att = document.createAttribute('chosen');
+        att = 'false';
+    }
+    if(elem.src =="#"){
+        elem.setAttribute('chosen','false');
+    }
+    else{
+        elem.setAttribute('chosen','true'); 
+    }
+    console.log(elem);
+}
+
+function templateReadyHandler(){
+    var isChoose = 'false', chooseIdx = 0, trueCount = 0;
+
+    for(i = 1; i < 10; i++){
+        if(i < 9){
+            var elem = document.getElementById('s'+i);
+            if(elem.getAttribute('chosen')=='true'){
+                isChoose = 'true';
+                chooseIdx = i;
+                trueCount++;
+            }
+        }
+        else if(i == 9){
+            var elem = document.getElementById('userMakeupTemplateShowImg');
+            if(elem.getAttribute('chosen')=='true'){
+                isChoose = 'true';
+                chooseIdx = i;
+                trueCount++;
+            }
+        }       
+    }
+    if(trueCount > 1){
+        alert("you can only choose one template.");
+    }
+    else{
+        if(isChoose=='true'){
+            if(chooseIdx == 9){
+                var elem = document.getElementById('userMakeupTemplateShowImg'), tar = document.getElementById('displayFace');
+                tar.src = elem.src;
+
+            }
+            else{
+                var elem = document.getElementById('s'+chooseIdx), tar = document.getElementById('displayFace');
+                tar.src = elem.src;
+            }
+        }
+        else{
+            alert("you need to choose one template.");
+        }
+        console.log("chooseIdx: "+chooseIdx);
+    }
+}
+
 $(function(){
     
     var pagePositon = 0,
@@ -142,8 +200,7 @@ $(function(){
     /**********/
     $( "#draggable" ).draggable();
     /**********/
-    if (window.File && window.FileReader && window.FileList
-            && window.Blob) {
+    if (window.File && window.FileReader && window.FileList && window.Blob) {
             function handleFileSelect(evt) {
                 console.log("handleFileSelect");
                 // FileList object containing all files
@@ -164,17 +221,17 @@ $(function(){
                         }
                     )(f);
                     reader.readAsDataURL(f);
+                    imageUpload();
                 }
             }
 
             document.getElementById('files')
                     .addEventListener('change', handleFileSelect, false);
-        } else {
+    }
+    else {
             alert("Your browser does not support files.");
-        }
+    }
     /**********/
-    
-
 
     /**********/
     /**********

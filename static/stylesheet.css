@@ -163,18 +163,33 @@ div.InputTemplate {
     margin-right: auto;
 }
 
+#templateReady {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 #userMakeupTemplateShowImg {
     display: block;
     margin-left: auto;
     margin-right: auto;
     width:50%;
+    max-height: 90%;
     visibility: hidden;
+}
+
+#displayFace {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    height:50%;
 }
 
 #draggable {
     width: 100px;
     height: 100px;
     background: #ccc;
+    float:left;
 }
 
 
