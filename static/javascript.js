@@ -24,10 +24,18 @@ var connectObj = {
                 connectObj.socket.send(JSON.stringify(message));
                 //console.log("sendMsg");
             },
-            showMsg: function(){
+            showMsg: function(message){
                 var data = JSON.parse(message);
                 //console.log("showMsg");
                 console.log(data);
+                for(key in data){
+                    switch(key){
+                        case 'draw_face':
+                            console.log('draw_face success show cam.jpg');
+                            document.getElementById('my_result').innerHTML = '<img src="static/face.jpg"/>';
+                    }
+                }
+
             }
 
         };

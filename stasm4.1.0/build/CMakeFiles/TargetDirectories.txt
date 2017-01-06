@@ -1,0 +1,9 @@
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/test.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/install/local.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/edit_cache.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/rebuild_cache.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/stasm_util.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/list_install_components.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/install.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/install/strip.dir
+/Users/asmailada/MakeupBot/stasm4.1.0/build/CMakeFiles/stasm.dir

@@ -7,7 +7,6 @@ import datetime
 #import urllib2
 import base64
 import sys
-import os
 import numpy as np
 import pylab as pl
 import glob
@@ -19,10 +18,12 @@ import math
 define("ip", default="your.ip")
 define("port", default=8888)
 
-def draw_face():
-    face = np.zeros((720, 1280, 3), np.uint8)
+def draw_face(img):
+    print ('draw_face')
+    #face = np.zeros((cam_height, cam_width, cam_channels), np.uint8)
+    face = img
 
-    info_path = ""
+    info_path = "./static/"
     for filename in glob.glob(os.path.join(info_path, '*.txt')):
         file = open(str(filename), 'r')
         lines = file.readlines()
@@ -34,7 +35,8 @@ def draw_face():
                 cv2.circle(face, (h, w), 2, (255, 255, 255), -1)
         file.close()
 
-    cv2.imwrite("face.jpg", face)
+    cv2.imwrite("./static/face.jpg", face)
+    print ('draw_face success')
 
 # render UI
 class Chat(web.RequestHandler):
@@ -57,40 +59,34 @@ class Socket(websocket.WebSocketHandler):
         for key in d:
             if key == "img":
                 print ('writing image')
-                with open("imageToSave.png", "wb") as fh:
-                    decode_message = d[key].split(",")[1]
-                    fh.write(base64.decodestring(decode_message))
-
-                """
-                with open("cam.jpg", "wb") as fh:
-                    decode_message = d[key].split(",")[1]
-                    #print(decode_message)
-                    fh.write(base64.decodestring(decode_message))
-                    print ('runnung stasm')
-                    while True:
-                        ret_val, img = base64.decodestring(decode_message)
-                        if mirror: 
-                            img = cv2.flip(img, 1)
-                        cv2.imshow('img', img)
-                        if cv2.waitKey(1) == 27: 
-                            sys.exit(0)  # esc to quit
-                        if cv2.waitKey(1) == 32: #space
-                            print("taking picture...")
-                            cam.set(3, 762)
-                            cam.set(4, 562)
-                            cv2.imwrite("./cam.jpg", img)
-                            subprocess.call(['./stasm.sh'])
-                            break
-                        time.sleep(0.005)
-
-                    cam.release()
-                    cv2.destroyAllWindows()
-
-                    draw_face(argv)
-                    """
+                decode_message = d[key].split(",")[1]
+                imgdata = base64.b64decode(decode_message)
+                filename = './static/cam.jpg'
+                with open(filename, 'wb') as f:
+                    f.write(imgdata)
+                    print ('webcam image written')
+                
+                print ('running stasm')
+                img = cv2.imread(filename)
+                #cv2.imshow(filename, img)
+                #if mirror: 
+                img = cv2.flip(img, 1)
+                cv2.imshow('flip', img)
+                #if cv2.waitKey(1) == 27: 
+                #    sys.exit(0)  # esc to quit
+                #if cv2.waitKey(1) == 32: #space
+                print("running subprocess...")
+                cv2.imwrite("./static/cam.jpg", img)
+                subprocess.call(['./stasm.sh'])
+                #    break
+                time.sleep(0.005)
+                cv2.destroyAllWindows()
+                draw_face(img)
+                send_message = {"draw_face":"draw_face success"}
+                self.write_message(send_message)
+                    
             if key == "end":
                 exit(0)
-        #write_message(message)
 
 # setting parameter
 settings = dict(

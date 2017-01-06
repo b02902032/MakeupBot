@@ -4,6 +4,7 @@
 
 #ifndef STASM_MISC_H
 #define STASM_MISC_H
+#include <opencv2/objdetect.hpp>
 
 namespace stasm
 {
