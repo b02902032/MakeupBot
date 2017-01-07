@@ -81,6 +81,11 @@ function imageUpload(){
 function templateReadyHandler(){
     var isChoose = 'false', chooseIdx = 0, trueCount = 0;
 
+    //set displayFace
+    var face = document.getElementById('displayFace');
+    face.src = "static/cam.jpg";
+
+    //set chosen template
     for(i = 1; i < 10; i++){
         if(i < 9){
             var elem = document.getElementById('s'+i);
@@ -105,12 +110,12 @@ function templateReadyHandler(){
     else{
         if(isChoose=='true'){
             if(chooseIdx == 9){
-                var elem = document.getElementById('userMakeupTemplateShowImg'), tar = document.getElementById('displayFace');
+                var elem = document.getElementById('userMakeupTemplateShowImg'), tar = document.getElementById('draggable');
                 tar.src = elem.src;
 
             }
             else{
-                var elem = document.getElementById('s'+chooseIdx), tar = document.getElementById('displayFace');
+                var elem = document.getElementById('s'+chooseIdx), tar = document.getElementById('draggable');
                 tar.src = elem.src;
             }
         }
@@ -118,6 +123,50 @@ function templateReadyHandler(){
             alert("you need to choose one template.");
         }
         console.log("chooseIdx: "+chooseIdx);
+    }
+
+}
+function editFinishedHandler(){
+
+    console.log("editFinishedHandler");
+    //calculate the relative position
+    var draggableOffset = $("#draggableDiv").offset();
+    var faceOffset = $('#displayFace').offset();
+    var draggableElem = document.getElementById('draggable');
+    var faceElem = document.getElementById('displayFace');
+    var dtop = Number(draggableOffset.top) - Number(faceOffset.top);
+    var dleft = Number(draggableOffset.left) - Number(faceOffset.left);
+    console.log('relative position: ( '+dtop+' , '+dleft+' )');
+    alert('relative position: ( '+dtop+' , '+dleft+' )');
+    var draggableW = draggableElem.offsetWidth;
+    var draggableH = draggableElem.offsetHeight;
+    alert('templatesize: ( '+draggableW+' , '+draggableH+' )');
+
+
+    //alert("Top position: " + x.top + " Left position: " + x.left);
+
+}
+
+function draggableHandler(){
+    if(document.getElementById("slideFour").checked){
+        alert("you need to disable resizable.");
+    }
+    else{
+        if(document.getElementById("slideThree").checked){
+            $( "#draggableDiv" ).draggable("enable");
+
+        }
+        else{
+            $( "#draggableDiv" ).draggable("disable");
+        }
+    }
+}
+function resizableHandler(){
+    if(document.getElementById("slideFour").checked){
+        $( "#draggable" ).resizable("enable");
+    }
+    else{
+        $( "#draggable" ).resizable("disable");   
     }
 }
 
@@ -197,8 +246,11 @@ $(function(){
     /**********
     test function
     **********/
+    $( "#draggable" ).resizable();
+    $( "#draggableDiv" ).draggable();
+
+
     /**********/
-    $( "#draggable" ).draggable();
     /**********/
     if (window.File && window.FileReader && window.FileList && window.Blob) {
             function handleFileSelect(evt) {

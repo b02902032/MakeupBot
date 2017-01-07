@@ -3,14 +3,14 @@
     <head>
     	<title>MakeupBot</title>
         <link rel='stylesheet' type='text/css' href='static/stylesheet.css'/>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
         <script src="static/jquery.min.js"></script>
         <script type="text/javascript" src="static/json2.js"></script>
         <script type="text/javascript" src="static/javascript.js"></script>
         <script type="text/javascript" src="static/webcam.js"></script>
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-  		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+        <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+  		<script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
         <!link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
-
     </head>
 	<body>
 
@@ -24,7 +24,7 @@
 			<a href="#pagefive">Draw on Lego</a>
 		</div>
 
-		<span class="menuBar" style="font-size:30px;cursor:pointer;" onclick="openNav()">&#9776;</span>
+		<span class="menuBar" style="font-size:30px;cursor:pointer;color:#004877;" onclick="openNav()">&#9776;</span>
 		<script>
 			function openNav() {
 			    document.getElementById("mySidenav").style.width = "250px";
@@ -172,8 +172,8 @@
 											att = 'false';
 										}
 										if(elem.style.boxShadow == ""){
-											elem.style.boxShadow = "inset 0px 0px 3px grey";
-											elem.style.border = "2px solid grey";
+											elem.style.boxShadow = "inset 0px 0px 3px #8596B0";
+											elem.style.border = "2px solid #004877";
 											elem.style.borderRadius = "10px";
 											elem.setAttribute('chosen','true');
 										}
@@ -260,10 +260,15 @@
 		<section>
 			<div class="page4">
 				<h1>Edit</h1>
-				<h2>see how chosen make up would look like</h2>
-				<button class="button" id="templateReady" onclick="templateReadyHandler()">Template Ready</button>
+				<h2>see how chosen makeup would look like</h2>
 				<img id="displayFace" src="" />
-				<div id="draggable">Drag me</div>
+				
+				<button class="button" id="templateReady" onclick="templateReadyHandler()">Template Ready</button>
+				<br><br/>
+				<button class="button" id="editFinished" onclick="editFinishedHandler()">Finish editing</button>
+				<br><br/>
+				<div id="draggableDiv"><img id="draggable" src="" /></div>
+				
 			</div>
 		</section>
 		<!- - - - - - - - - - - - - - - - - - - - page four       - - - - - - - - - - - - - - - - - - - ->

@@ -68,13 +68,6 @@ class Socket(websocket.WebSocketHandler):
                 
                 print ('running stasm')
                 img = cv2.imread(filename)
-                #cv2.imshow(filename, img)
-                #if mirror: 
-                img = cv2.flip(img, 1)
-                cv2.imshow('flip', img)
-                #if cv2.waitKey(1) == 27: 
-                #    sys.exit(0)  # esc to quit
-                #if cv2.waitKey(1) == 32: #space
                 print("running subprocess...")
                 cv2.imwrite("./static/cam.jpg", img)
                 subprocess.call(['./stasm.sh'])
